@@ -1,6 +1,7 @@
+/*eslint "dot-location": ["error", "object"]*/
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import * as BooksAPI from './BooksAPI'
+import * as BooksAPI from './BooksAPI';
 import './App.css';
 import BooksList from './BooksList';
 import Search from './Search';
@@ -16,7 +17,6 @@ class BooksApp extends Component {
 	componentDidMount() {
 		BooksAPI.
 			getAll().
-			then(books => { console.log(books); return books; }).
 			then(books => this.setState({ books })).
 			catch(console.error);
 	}
@@ -62,7 +62,6 @@ class BooksApp extends Component {
 			if (query)
 				BooksAPI.
 					search(query).
-					then(books => { console.log(books); return books; }).
 					then(books => { return (!books || books.error) ? [] : books; }).
 					then(books => this.setState({ searchResults: books })).
 					catch(error => {
@@ -71,7 +70,6 @@ class BooksApp extends Component {
 					});
 			else
 				this.setState({ searchResults: [] });
-
 		});
 	};
 
@@ -94,7 +92,7 @@ class BooksApp extends Component {
 
 				</div>
 			</Router>
-		)
+		);
 	}
 }
 
