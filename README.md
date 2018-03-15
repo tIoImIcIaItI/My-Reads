@@ -4,6 +4,8 @@ This is my submission for the My Reads project for Udacity's React Fundamentals 
 
 A detailed functional description may be found [here](https://review.udacity.com/#!/rubrics/918/view).
 
+Note that the search query is retained, as I felt this led to a better user experience when flipping between pages.
+
 # Building and Running the app
 From the root project directory run `npm i`.
 
