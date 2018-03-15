@@ -7,6 +7,7 @@ class Search extends Component {
 
 	static propTypes = {
 		books: PropTypes.array,
+		allBooks: PropTypes.array.isRequired,
 		moveToShelf: PropTypes.func.isRequired,
 		query: PropTypes.string,
 		search: PropTypes.func.isRequired
@@ -37,7 +38,9 @@ class Search extends Component {
 
 						{(this.props.books || []).filter(b => b).map(book => {
 
-							const image = book.imageLinks ? book.imageLinks.thumbnail : null;
+							const theImage = book.imageLinks ? book.imageLinks.thumbnail : null;
+							const theBook = this.props.allBooks.find(b => b.id === book.id);
+							const theShelf = theBook ? theBook.shelf : book.shelf;
 
 							return (
 								<li key={book.id}>
@@ -45,8 +48,8 @@ class Search extends Component {
 										id={book.id}
 										title={book.title}
 										authors={book.authors}
-										backgroundImage={image}
-										shelf={book.shelf}
+										backgroundImage={theImage}
+										shelf={theShelf}
 										moveToShelf={shelf => this.props.moveToShelf(book.id, shelf)} />
 								</li>
 							);

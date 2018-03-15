@@ -81,6 +81,7 @@ class BooksApp extends Component {
 					<Route exact path="/search" render={() =>
 						<Search
 							books={this.state.query ? this.state.searchResults : []}
+							allBooks={this.state.books || []}
 							query={this.state.query}
 							moveToShelf={this.moveToShelf}
 							search={this.search} />} />
